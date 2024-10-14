@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DLSU Reserve Settings</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="editprofile_design.css">
+    
+</head>
+<body>
+    <div class="wrapper">
+
+        <div class="divider"><h1>EDIT RESERVATION</h1> </div> <!--Eto lang yung divider sa may header part-->
+
+        <!--SIDEBAR-->
+        <div class="sidenav">
+            <h1>DLSU Reserve</h1>
+
+            <!--ICONS-->
+            <ul>
+                <li><a href="Reservation_LocP1.1.html"><i class="large material-icons">event_note</i>Reserve</a></li> <!--SELECTED MENU-->
+                <li><a href="PeopleStudent.html"><i class="large material-icons">group</i>People</a></li>
+                <li><a href="BookingsStudent.html"><i class="large material-icons">collections_bookmark</i>Bookings</a></li>
+                <li><a href="editprofile_student.html"><i class="large material-icons">settings</i>Settings</a></li>
+            </ul>
+            <div class="logout">
+                <a href="LoginStudent.html"><i class="large material-icons">exit_to_app</i>Log Out</a>
+            </div>
+
+            <!--PROFILE-->
+            <div class="userprof">
+                <a href="UserStudent.html"> <!--href will lead to user profile-->
+                    <img class="placeholder-image" src="francine.jpg" alt="Francine">
+                </a>
+            </div>
+            <div class="userred">
+                <a href="UserStudent.html" class="usernamee"><b>Francine Lastimoza</b></a> <!--href will lead to user profile-->
+            </div>
+            <div class="useremail">
+                <span><h4>francine@dlsu.edu.ph</h4></span>
+            </div>
+
+        </div>      
+        <!--MAIN CONTENT-->
+        <div class="main-content">
+            <div class="profile-section">
+                <form action="profile_staff" method="post">
+                    
+                    <div class="form-group">
+                        <label for="text">Date of Reservation</label>
+                        <input type="text" id="reservation" name="date2" value="Francine@dlsu.edu.ph">
+                    </div>
+                    <div class="form-group">
+                        <label for="timeslot">Time of Reservation</label>
+                        <input type="text" id="timeslot" name="time2" value="8:30 AM">
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Seat</label>
+                        <input type="text" id="seat" name="seat2" value="Gokongwei 302A">
+                    </div>
+                    <button type="submit">Save Changes</button>
+                </form>
+            </div>
+        </div>
+
+
+
+    </div>
+</body>
+</html>

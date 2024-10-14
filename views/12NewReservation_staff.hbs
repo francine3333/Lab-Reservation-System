@@ -1,0 +1,796 @@
+Gabriel Villas
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DLSU Reserve 1.2 Student</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+    const currentDate = new Date();
+    document.getElementById('reservationDate').value = currentDate.toISOString().split('T')[0]; // Sets current date
+    });
+    
+</script>
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    font-weight: 550;
+    background-color: #F9F9F9;
+    font-family: 'Inter', sans-serif;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+i {
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.divider {
+    line-height: 133px;
+    border-bottom: #E1E1E1 1px solid;
+    width: 1350px; 
+    margin-left: 330px; 
+}
+
+.sidenav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 250px; 
+    height: 100%;
+    background-color: white;
+    border-radius: 30px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.sidenav .logout {
+    position: absolute;
+    bottom: 200px;
+    left: 125px; 
+    transform: translateX(-50%);
+    background-color: white;
+    /**/
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.sidenav .logout a {
+    display: flex;
+    align-content: start;
+    background-color: white;
+    width: 200px;
+    height: 40px;
+    align-items: center;
+    padding-left: 10px;
+    color: #464B47;
+}
+
+    /**/
+    .sidenav .logout a:hover{
+        background-color: #E9F7EC;
+        border-radius: 10px;
+    }
+    /**/
+    .sidenav .logout a:hover > i{
+        background-color: #E9F7EC;
+        border-radius: 10px;
+    }
+
+.sidenav h1 {
+    color: black;
+    text-align: center;
+    line-height: 130px;
+    background-color: white;
+}
+
+.sidenav .selected {
+    background-color: #E9F7EC;
+    border-radius: 10px;
+    color: #13832C;
+}
+
+.sidenav .selected i {
+    color: #464B47;
+    background-color: #E9F7EC;
+}
+
+.sidenav ul {
+    list-style: none;
+    padding: 0;
+    padding-left: 20px;
+    background-color: white;
+}
+
+.sidenav ul li {
+    padding: 2px 0;
+    background-color: white;
+}
+
+.sidenav ul li a {
+    display: flex;
+    align-content: start;
+    background-color: white;
+    width: 200px;
+    height: 40px;
+    align-items: center;
+    padding-left: 10px;
+    color: #464B47;
+    /**/
+    transition: 0.4;
+    cursor: pointer;
+}
+
+/**/
+.sidenav ul li a:hover{
+    background-color: #E9F7EC;
+    border-radius: 10px;
+}
+/**/
+.sidenav ul li a:hover > i{
+    background-color: #E9F7EC;
+    border-radius: 10px;
+}
+
+.sidenav ul li i {
+    background-color: white;
+}
+
+.reservation-box {
+    position: absolute;
+    left: 35%; 
+    top: 20%; 
+    width: 55%; 
+    height: 70%; 
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.date-header {
+    width: 90%; 
+    padding: 20px 16px;
+    background: transparent;
+    box-shadow: 0px -1px 0px rgba(17, 17, 17, 0.08) inset;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow-y: hidden;
+}
+
+.date-text {
+    width: 20%; 
+    color: rgba(0, 0, 0, 0.70);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+    background-color: white;
+}
+
+.time-block-container {
+    width: 90%; 
+    height: 100%;
+    padding: 0.6% 1%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5%; 
+    background-color: white;
+    overflow-y: hidden;
+}
+
+.time-block {
+    width: 10%; 
+    height: 50%; 
+    background: rgba(26, 168, 57, 0.50);
+    border: none;
+    border-radius: 15px;
+    color: #105A20;
+    font-size: 16px;
+    font-weight: 550;
+    line-height: 19px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1%; 
+    overflow-y: hidden;
+}
+
+.time-block a{
+    max-height: fit-content;
+}
+
+.time-block:hover {
+    background: rgba(26, 168, 57, 0.70);
+}
+
+/**/
+
+.newres {
+    width: 200px;
+    left: 330px;
+    top: 200px;
+    position: absolute;
+}
+
+.newres p {
+    font-size: 24px;
+}
+
+.location-selector {
+    width: 180px;
+    height: 218px;
+    position: absolute;
+    top: 275px;
+    left: 330px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.selector-header {
+    width: 180px;
+    height: 30px;
+    color: black;
+    overflow-y: hidden;
+    box-shadow: 0px -1px 0px black inset;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 19px;
+    padding-left: 30px;
+    padding-bottom: 6px;
+}
+
+.selector-option {
+    width: 180px;
+    height: 41px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: #636366;
+    font-size: 14px;
+    padding-left: 30px;
+    box-shadow: 0px -1px 0px rgba(17, 17, 17, 0.08) inset;
+    font-weight: 550;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.selector-option:hover{
+    color:  #2A8F41;
+}
+
+.selector-option.active {
+    color: black;
+    justify-content: flex-start;
+    align-content: flex-end;
+    color: #2A8F41;
+    padding-left: 30px;
+    box-shadow: 0px -1px 0px rgba(17, 17, 17, 0.08) inset;
+}
+
+/**/
+
+.placeholder-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 24px;
+}
+
+.userprof {
+    position: absolute;
+    bottom: 115px;
+    left: 130px;
+    transform: translateX(-50%);
+    padding-top: 15px;
+    padding-right: 130px;
+    padding-left: 9px;
+    border-top: #E1E1E1 1px solid;
+    background-color: white;
+}
+
+.userred {
+    position: absolute;
+    bottom: 95px;
+    width: 90%;
+    margin-left: 62%;
+    transform: translateX(-50%);
+    background-color: white;
+}
+
+.userred b {
+    color: black;
+    background-color: white;
+}
+
+.useremail {
+    position: absolute;
+    bottom: 75px;
+    transform: translateX(-50%);
+    left: 113.5px;
+    color: #636366;
+}
+
+.useremail h4 {
+    font-weight: 200;
+    background-color: white;
+}
+
+/* Reservation Boxes */
+.reservation-content-box {  
+    position: absolute;
+    top: 200px;
+    right: 200px ;
+    width: 1000px;
+    height: 600px;
+    display: block;
+    background: white;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 25px;
+}
+
+.reservation-header {
+    position: absolute;
+    top: 50px;
+    left: 80px;
+    background-color: white;
+}
+/**/
+
+.resbox {
+    background-color: white;
+}
+
+.available-box {
+    position: absolute; 
+    top: 150px;
+    left: 180px;
+    display: inline-block; 
+    background: white;
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
+}
+.available {
+    position: absolute; 
+    top: 150px;
+    left: 230px;
+    background-color: white;
+}
+
+.taken-box {
+    position: absolute; 
+    top: 150px;
+    left: 450px;
+    display: inline-block; 
+    background: #636366;
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
+}
+.taken {
+    position: absolute; 
+    top: 150px;
+    left: 500px;
+    background-color: white;
+}
+
+.selected-box {
+    position: absolute; 
+    top: 150px;
+    left: 700px;
+    display: inline-block; 
+    background: #58A76A;
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
+}
+
+.selected-text {
+    position: absolute; 
+    top: 150px;
+    left: 750px;
+    background-color: white;
+}
+
+.available-box-content{
+    display: inline-block; 
+    background: white;
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
+    cursor: pointer;
+} 
+table {
+    position: absolute; 
+    top: 230px;
+    left: 415px;
+    background-color: white;
+}
+
+td, th{
+    padding-right: 20px;
+    padding-bottom: 0px;
+    background-color: white;
+}
+
+.book-reservation-button {
+    position: absolute; 
+    bottom: 80px;
+    left: 450px;
+    background: rgba(26, 168, 57, 0.50);
+    color: #105A20;
+    padding: 15px 32px;
+    text-align: center;
+    font-size: 10px;
+    transition: 0.4s;
+    cursor: pointer;
+    border-radius: 25px;
+    font-family: 'Inter', sans-serif;
+}
+
+.book-reservation-button a{
+    background-color: transparent;
+    color: #13832C;
+}
+
+.book-reservation-button:hover{
+    background: rgba(26, 168, 57, 0.70);
+}
+
+.reserve-anony-box {
+    position: absolute; 
+    bottom: 50px; 
+    left: 430px;
+}
+.reserve-anony-label {
+    position: absolute; 
+    bottom: 50px; 
+    left: 450px;
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+    background-color: white;
+}
+
+.time-header {
+    position: absolute;
+    top: 50px;
+    left: 250px;
+    background-color: white;
+}
+
+.seat-box input {
+    height: 0;
+    width: 0;
+  }
+
+  .seat-box {
+    display: block;
+    position: relative;
+    padding-left: 26px;
+    margin-bottom: 18px;
+    font-size: 22px;
+    user-select: none;
+  }
+
+  .selectmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    border: 1px solid black;
+    background-color: white;
+  } 
+
+  .seat-box:hover input ~ .selectmark {
+    background-color: #58A76A;
+  }
+  .seat-box input:checked ~ .selectmark {
+    background-color: #58A76A;
+  }
+  .one {
+    position: absolute; 
+    top: 25px;
+    left: 235px;
+  }
+  .two {
+    position: absolute; 
+    top: 70px;
+    left: 235px;
+  }
+  .three {
+    position: absolute; 
+    top: 115px;
+    left: 235px;
+  }
+  .four {
+    position: absolute; 
+    top: 160px;
+    left: 235px;
+  }
+  .five {
+    position: absolute; 
+    top: 210px;
+    left: 235px;
+  }
+
+input[type=submit] {
+    position: absolute; 
+    bottom: 80px;
+    left: 450px;
+    background: rgba(26, 168, 57, 0.50);
+    color: #105A20;
+    padding: 15px 32px;
+    text-align: center;
+    font-size: 10px;
+    transition: 0.4s;
+    cursor: pointer;
+    border-radius: 25px;
+    font-family: 'Inter', sans-serif;
+  }
+
+    </style>
+</head>
+<body>
+   <!-- To put files in each other -->
+<div class="wrapper">
+
+        <div class="divider">.</div> <!--Eto lang yung divider sa may header part-->
+
+       <!--SIDEBAR-->
+       <div class="sidenav">
+        <h1>DLSU Reserve</h1>
+
+        <!--ICONS-->
+        <ul>
+            <li><a href="21Reservation_LocP" class="selected"><i class="large material-icons">event_note</i>Reserve</a></li> <!--SELECTED MENU-->
+            <li><a href="PeopleStaff"><i class="large material-icons">group</i>People</a></li>
+            <li><a href="BookingStaff"><i class="large material-icons">collections_bookmark</i>Bookings</a></li>
+            <li><a href="editprofile_staff"><i class="large material-icons">settings</i>Settings</a></li>
+        </ul>
+        <div class="logout">
+            <a href="LoginStaff.html"><i class="large material-icons">exit_to_app</i>Log Out</a>
+        </div>
+
+
+            <!--PROFILE-->
+            <div class="userprof">
+                <a href="UserStaff.html"> <!--href will lead to user profile-->
+                    <img class="placeholder-image" src="/common/Mimi.png" alt="Mimi Yhu">
+                </a>
+            </div>
+            <div class="userred">
+                <a href="UserStaff.html" class="usernamee"><b>Mimi Yhu</b></a> <!--href will lead to user profile-->
+            </div>
+            <div class="useremail">
+                <span><h4>MimiY@dlsu.edu.ph</h4></span>
+            </div>
+
+        </div>
+
+        <!--reservation selector-->
+        <div class="newres">
+            <p>New Reservation</p>
+        </div>
+
+        <div class="reservation">
+            <div class="location-selector">
+                <div class="selector-header">Select Location</div>
+                <a href="21Reservation_LocP" class="selector-option active">Gokongwei 302A</a>
+                <a href="21Reservation_LocP" class="selector-option">Gokongwei 403B</a>
+                <a href="21Reservation_LocP" class="selector-option"><b>Gokongwei 205A</b></a> <!--SELECTED LOCATION-->
+            </div>
+        </div>
+            
+        <!-- Reservation Part -->
+    <div class = "reservation-content-box"> 
+        <div class = "reservation-header"> June 5, 2024   <hr width="900px"> </div> <div class = "time-header"> 8:00 to 8:30 am</div>
+        <div class = "available-box"> </div> <div class = "available"> Available </div>
+        <div class = "taken-box"> </div> <div class = "taken"> Taken </div>
+        <div class = "selected-box"> </div> <div class = "selected-text"> Selected </div>
+            <!-- Hidden inputs for date and time -->
+    <form action="/reserve" method="POST">
+    <input type="hidden" name="userType" value="staff">
+    <input type="hidden" name="date" value="29/07/2024">
+    <input type="hidden" name="time" value="8:00 to 8:30 am">
+        <div> 
+            <table>
+                <tr>
+                        <th> A </th>
+                        <th> B </th>
+                        <th> C </th>
+                        <th> D </th>
+                        <th> E </th>
+                </tr>
+                <tr> 
+                <th> 
+                        <!--Seat Boxes-->
+                        <label class="seat-box">        
+                         <input type = "checkbox" id = "seatA3" name = "seat" value = "A1"> <span class = "selectmark"> </span> 
+                        </label>
+                </th>
+                <th> 
+                        <!--Seat Boxes-->
+                        <label class="seat-box">        
+                         <input type = "checkbox" id = "seatA3" name = "seat" value = "B1"> <span class = "selectmark"> </span> 
+                        </label>
+                </th>
+                <th> 
+                        <!--Seat Boxes-->
+                        <label class="seat-box">        
+                         <input type = "checkbox" id = "seatA3" name = "seat" value = "C1"> <span class = "selectmark"> </span> 
+                        </label>
+                </th>
+                <th> 
+                        <!--Seat Boxes-->
+                        <label class="seat-box">        
+                         <input type = "checkbox" id = "seatA3" name = "seat" value = "D1"> <span class = "selectmark"> </span> 
+                        </label>
+                </th>
+                <th> 
+                        <!--Seat Boxes-->
+                        <label class="seat-box">        
+                         <input type = "checkbox" id = "seatA3" name = "seat" value = "E1"> <span class = "selectmark"> </span> 
+                        </label>
+                </th>
+                <th> <div class = "one"> 1 </div></th>
+                </tr>
+                <!--Row 2 -->
+                <tr> 
+                            <th> 
+                        <!--Seat Boxes-->
+                        <label class="seat-box">        
+                         <input type = "checkbox" id = "seatA3" name = "seat" value = "A2"> <span class = "selectmark"> </span> 
+                        </label>
+                </th>
+                <th> 
+                        <!--Seat Boxes-->
+                        <label class="seat-box">        
+                         <input type = "checkbox" id = "seatA3" name = "seat" value = "B2"> <span class = "selectmark"> </span> 
+                        </label>
+                </th>
+                <th> 
+                        <!--Seat Boxes-->
+                        <label class="seat-box">        
+                         <input type = "checkbox" id = "seatA3" name = "seat" value = "C2"> <span class = "selectmark"> </span> 
+                        </label>
+                </th>
+                <th> 
+                        <!--Seat Boxes-->
+                        <label class="seat-box">        
+                         <input type = "checkbox" id = "seatA3" name = "seat" value = "D2"> <span class = "selectmark"> </span> 
+                        </label>
+                </th>
+                <th> 
+                        <!--Seat Boxes-->
+                        <label class="seat-box">        
+                         <input type = "checkbox" id = "seatA3" name = "seat" value = "E2"> <span class = "selectmark"> </span> 
+                        </label>
+                </th>
+                    <th> <div class = "two"> 2 </div></th>
+                </tr>
+                <tr> 
+                    <th> 
+                        <!--Seat Boxes-->
+                        <label class="seat-box">        
+                         <input type = "checkbox" id = "seatA3" name = "seat" value = "A3"> <span class = "selectmark"> </span> 
+                        </label>
+                    </th>
+                    <th> 
+                        <!--Seat Boxes-->
+                        <label class="seat-box">        
+                         <input type = "checkbox" id = "seatB3" name = "seat" value = "B3"> <span class = "selectmark"> </span> 
+                        </label>
+                    </th>
+                    <th> 
+                        <!--Seat Boxes-->
+                        <label class="seat-box">        
+                        <input type = "checkbox" id = "seatC3" name = "seat" value = "C3"> <span class = "selectmark"> </span> 
+                        </label>
+                    </th>
+                    <th> 
+                        <!--Seat Boxes-->
+                        <label class="seat-box">        
+                         <input type = "checkbox" id = "seatD3" name = "seat" value = "D3"> <span class = "selectmark"> </span> 
+                        </label>
+                    </th>
+                    <th> 
+                        <!--Seat Boxes-->
+                        <label class="seat-box">        
+                         <input type = "checkbox" id = "seatE3" name = "seat" value = "E3"><span class = "selectmark"> </span> 
+                        </label>
+                    </th>
+                    <th> <div class = "three"> 3 </div></th>
+                </tr>
+                <tr> 
+                    <th> 
+                        <!--Seat Boxes-->
+                        <label class="seat-box">        
+                         <input type = "checkbox" id = "seatA4" name = "seat" value = "A4"> <span class = "selectmark"> </span> 
+                        </label>
+                    </th>
+                    <th> 
+                        <!--Seat Boxes-->
+                        <label class="seat-box">        
+                         <input type = "checkbox" id = "seatB4" name = "seat" value = "B4"> <span class = "selectmark"> </span> 
+                        </label>
+                    </th>
+                    <th> 
+                        <!--Seat Boxes-->
+                        <label class="seat-box">        
+                         <input type = "checkbox" id = "seatC4" name = "seat" value = "C4"> <span class = "selectmark"> </span> 
+                        </label>
+                    </th>
+                    <th> 
+                        <!--Seat Boxes-->
+                        <label class="seat-box">        
+                        <input type = "checkbox" id = "seatD4" name = "seat" value = "D4"><span class = "selectmark"> </span> 
+                        </label>
+                    </th>
+                    <th> 
+                        <!--Seat Boxes-->
+                        <label class="seat-box">        
+                        <input type = "checkbox" id = "seatE4" name = "seat" value = "E4"> <span class = "selectmark"> </span> 
+                        </label>
+                    </th>
+                    <th> <div class = "four"> 4 </div></th>
+                </tr>
+                <tr> 
+                    <th> 
+                        <!--Seat Boxes-->
+                        <label class="seat-box">        
+                             <input type = "checkbox" id = "seatA5" name = "seat" value = "A5"> <span class = "selectmark"> </span> 
+                        </label>
+                    </th>
+                    <th> 
+                        <!--Seat Boxes-->
+                        <label class="seat-box">        
+                         <input type = "checkbox" id = "seatB5" name = "seat" value = "A5">  <span class = "selectmark"> </span> 
+                        </label>
+                    </th>
+                    <th> 
+                        <!--Seat Boxes-->
+                        <label class="seat-box">        
+                       <input type = "checkbox" id = "seatC5" name = "seat" value = "C5">  <span class = "selectmark"> </span> 
+                        </label>
+                    </th>
+                    <th> 
+                        <!--Seat Boxes-->
+                        <label class="seat-box">        
+                        <input type = "checkbox" id = "seatD5" name = "seat" value = "D5"> <span class = "selectmark"> </span> 
+                        </label>
+                    </th>
+                    <th> 
+                        <!--Seat Boxes-->
+                        <label class="seat-box">        
+                       <input type = "checkbox" id = "seatE5" name = "seat" value = "E5">  <span class = "selectmark"> </span> 
+                        </label>
+                    </th>
+                    <th> <div class = "five"> 5 </div></th>
+                </tr>
+            </table>
+        </div>
+        <div> <input type="submit" value="Book Reservation">  </div>
+        <div class = "reserve-anony-box"> <input type = "checkbox">  </div> <div class = "reserve-anony-label"> Reserve Anonymously </div>
+    </div>
+    </form>
+</div>
+
+
+</body>
+</html>

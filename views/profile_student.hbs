@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Student</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    background-color: #F9F9F9;
+    font-family: 'Inter', sans-serif;
+}
+a {
+    color: black;
+    text-decoration: none;
+}
+
+i {
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.divider {
+    line-height: 133px;
+    border-bottom: #E1E1E1 1px solid;
+    width: 1350px; 
+    margin-left: 330px; 
+}
+
+.sidenav {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 250px; 
+    height: 100%;
+    background-color: white;
+    border-radius: 30px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);
+    font-weight: 550;
+}
+
+.sidenav .logout {
+    position: absolute;
+    bottom: 200px;
+    left: 125px; 
+    transform: translateX(-50%);
+    background-color: white;
+}
+
+.sidenav .logout a {
+    display: flex;
+    align-content: start;
+    background-color: white;
+    width: 200px;
+    height: 40px;
+    align-items: center;
+    padding-left: 10px;
+    color: #464B47;
+    /**/
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+    /**/
+    .sidenav .logout a:hover{
+        background-color: #E9F7EC;
+        border-radius: 10px;
+    }
+    /**/
+    .sidenav .logout a:hover > i{
+        background-color: #E9F7EC;
+        border-radius: 10px;
+    }
+
+.sidenav h1 {
+    color: black;
+    text-align: center;
+    line-height: 130px;
+    background-color: white;
+}
+
+.sidenav .selected {
+    background-color: #E9F7EC;
+    border-radius: 10px;
+    color: #13832C;
+}
+
+.sidenav .selected i {
+    color: #464B47;
+    background-color: #E9F7EC;
+}
+
+.sidenav ul {
+    list-style: none;
+    padding: 0;
+    padding-left: 20px;
+    background-color: white;
+}
+
+.sidenav ul li {
+    padding: 2px 0;
+    background-color: white;
+}
+
+.sidenav ul li a {
+    display: flex;
+    align-content: start;
+    background-color: white;
+    width: 200px;
+    height: 40px;
+    align-items: center;
+    padding-left: 10px;
+    color: #464B47;
+    /**/
+    transition: 0.4;
+    cursor: pointer;
+}
+/**/
+    .sidenav ul li a:hover{
+        background-color: #E9F7EC;
+        border-radius: 10px;
+    }
+/**/
+    .sidenav ul li a:hover > i{
+        background-color: #E9F7EC;
+        border-radius: 10px;
+    }
+
+.sidenav ul li i {
+    background-color: white;
+}
+
+.main {
+    margin-left: 250px;
+    padding: 20px;
+}
+
+.back-link{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #000;
+    font-size: 18px;
+    margin-bottom: 20px;
+    position: relative;
+    left: 50px;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.back-link i {
+    font-size: 24px;
+    margin-right: 8px;
+}
+
+.back-link:hover{
+    color: #2A8F41;
+}
+
+.back-link i:hover{
+    color: #2A8F41;
+}
+
+.placeholder-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 24px;
+}
+
+.userprof {
+    position: absolute;
+    bottom: 115px;
+    left: 130px;
+    transform: translateX(-50%);
+    padding-top: 15px;
+    padding-right: 130px;
+    padding-left: 9px;
+    border-top: #E1E1E1 1px solid;
+    background-color: white;
+}
+
+.userred {
+    position: absolute;
+    bottom: 95px;
+    width: 90%;
+    margin-left: 62%;
+    transform: translateX(-50%);
+    background-color: white;
+}
+
+.userred b {
+    color: black;
+    background-color: white;
+}
+
+.useremail {
+    position: absolute;
+    bottom: 75px;
+    transform: translateX(-50%);
+    left: 113.5px;
+    color: #636366;
+}
+
+.useremail h4 {
+    font-weight: 200;
+    background-color: white;
+}
+
+.profile {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 20px;
+    width: 80%;
+    margin: auto;
+    text-align: left;
+}
+.profile img {
+    border-radius: 50%;
+    width: 120px;
+    float: left;
+    margin-right: 20px;
+}
+.profile h2 {
+    margin-top: 0;
+    font-size: 24px;
+    color: #333;
+
+}
+.profile p {
+    color: #666;
+    font-size: 16px;
+    font-weight: normal;
+}
+.reservations{
+    margin-top: 20px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 20px;
+    width: 80%;
+    margin: auto;
+}
+.reservations h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+}
+.reservations table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.reservations th, .reservations td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.reservations td{
+    font-weight: normal;
+}
+.reservations th {
+    background-color: #F9F9F9;
+    font-weight: bold;
+    border-bottom: 1px solid black;
+    
+}
+
+
+/**/
+.bookings, .people{
+    margin-top: 1%;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 20px;
+    width: 80%;
+    margin-left: 2%;
+}
+.bookings h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+}
+.bookings table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.bookings td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+.bookings th {
+    padding: 10px;
+    text-align: left;
+    background-color: #F9F9F9;
+    font-weight: bold;
+    border-bottom: 2px solid #000;
+}
+
+
+/**/
+.people h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+}
+.people table {
+    width: 50%;
+    border-collapse: collapse;
+}
+.people td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+.people th {
+    padding: 10px;
+    text-align: left;
+    background-color: #F9F9F9;
+    font-weight: bold;
+    border-bottom: 2px solid #000;
+}
+
+.bookings button{
+    background-color:#F96B6B;
+    width: 100%;
+    padding: 5px;
+    border: 0px;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+}
+
+.bookings a, .people a{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    text-decoration: none;
+}
+
+.bookings button:hover{
+    background-color: darkred;
+}
+
+.people button, .reservations button{
+    background-color: #8CD39B;
+    color: #105A20;
+    width: 100%;
+    padding: 5px;
+    border: 0px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.reservations button{
+    width: 50%;
+}
+
+.people button:hover, .reservations button:hover{
+    background-color: rgba(62, 137, 79, 0.7);
+}
+
+.newres {
+    width: 200px;
+    left: 330px;
+    top: 200px;
+    position: absolute;
+}
+
+.newres p{
+    font-size: 24px;
+}
+
+.location-selector {
+    width: 180px;
+    height: 218px;
+    position: absolute;
+    top: 275px;
+    left: 330px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.selector-header {
+    width: 180px;
+    height: 30px;
+    color: black;
+    overflow-y: hidden;
+    box-shadow: 0px -1px 0px black inset;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 19px;
+    padding-left: 30px;
+    padding-bottom: 6px;
+}
+
+.selector-option {
+    width: 180px;
+    height: 41px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: #636366;
+    font-size: 14px;
+    padding-left: 30px;
+    box-shadow: 0px -1px 0px rgba(17, 17, 17, 0.08) inset;
+    font-weight: 550;
+}
+
+.selector-option.active {
+    color: black;
+    justify-content: flex-start;
+    align-content: flex-end;
+    color: #2A8F41;
+    padding-left: 30px;
+    box-shadow: 0px -1px 0px rgba(17, 17, 17, 0.08) inset;
+}
+    </style>
+   
+</head>
+<body>
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>DLSU Reserve Settings</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="editprofile_design.css">
+        
+    </head>
+    <body>
+        <div class="wrapper">
+            
+            <div class="divider">.</div> <!--Eto lang yung divider sa may header part-->
+    
+            <!--SIDEBAR-->
+            <div class="sidenav">
+                <h1>DLSU Reserve</h1>
+    
+                <!--ICONS-->
+                <ul>
+                    <li><a href="Reservation_LocP1.1"><i class="large material-icons">event_note</i>Reserve</a></li> <!--SELECTED MENU-->
+                    <li><a href="PeopleStudent"  class="selected"><i class="large material-icons">group</i>People</a></li>
+                    <li><a href="BookingStudent"><i class="large material-icons">collections_bookmark</i>Bookings</a></li>
+                    <li><a href="editprofile_student"><i class="large material-icons">settings</i>Settings</a></li>
+                </ul>
+                <div class="logout">
+                    <a href="UserStudent.html"><i class="large material-icons">exit_to_app</i>Log Out</a>
+                </div>
+        
+                <!--PROFILE-->
+                <div class="userprof">
+                    <a href="UserStudent.html"> <!--href will lead to user profile-->
+                        <img class="placeholder-image" src="/common/francine.jpg" alt="Francine">
+                    </a>
+                </div>
+                <div class="userred">
+                    <a href="UserStudent.html" class="usernamee"><b>{{name}}</b></a> <!--href will lead to user profile-->
+                </div>
+                <div class="useremail">
+                    <span><h4>{{email}}</h4></span>
+                </div>    
+    
+            </div>
+
+<div class="main">
+    <a href="PeopleStudent" class="back-link"><i class="material-icons">arrow_back</i> Back</a>
+    <div class="profile">
+        <img src="/common/francine.jpg" alt="Francine Lastimosa">
+        <br><br>
+        <h2>{{name}}</h2>
+        <p>Student</p><br><br><br><br>
+        <h3 style="font-weight:bold">About Me</h3><br>
+        <p>{{description}}.</p>
+    </div>
+      <div class="reservations">
+        <br><br><h3>Current Reservations</h3>
+        <table>
+            <tr>
+                <th>Date of Reservation</th>
+                <th>Time of Reservation</th>
+                <th>Seat</th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>{{date1}}</td>
+                <td>{{time1}}</td>
+                <td>{{seat1}}</td>
+                <td><a href="EditReservationStudent1"><button>Edit Reservation</button></a></td>
+            </tr>
+          
+        </table>
+    </div>
+</div>
+    
+        </div>
+    </body>
+    </html>
+    
+
+
+</div>
+
+</body>
+</html>

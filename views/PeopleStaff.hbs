@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>People Staff</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="profile_design.css">
+</head>
+<body>
+    <div class="divider">.</div> <!--Eto lang yung divider sa may header part-->
+    <!--SIDEBAR-->
+    <div class="sidenav">
+        <h1>DLSU Reserve</h1>
+        <!--ICONS-->
+        <ul>
+            <li><a href="21Reservation_LocP"><i class="large material-icons">event_note</i>Reserve</a></li> <!--SELECTED MENU-->
+            <li><a href="PeopleStaff" class="selected"><i class="large material-icons">group</i>People</a></li>
+            <li><a href="BookingStaff"><i class="large material-icons">collections_bookmark</i>Bookings</a></li>
+            <li><a href="editprofile_staff"><i class="large material-icons">settings</i>Settings</a></li>
+        </ul>
+        <div class="logout">
+            <a href="LoginStaff"><i class="large material-icons">exit_to_app</i>Log Out</a>
+        </div>
+
+        <!--PROFILE-->
+            <div class="userprof">
+                <a href="UserStaff.html"> <!--href will lead to user profile-->
+                    <img class="placeholder-image" src="/common/Mimi.png" alt="Mimi Yhu">
+                </a>
+            </div>
+            <div class="userred">
+                <a href="UserStaff.html" class="usernamee"><b>Mimi Yhu</b></a> <!--href will lead to user profile-->
+            </div>
+            <div class="useremail">
+                <span><h4>MimiY@dlsu.edu.ph</h4></span>
+            </div>
+
+        </div>
+
+    <div class="main">
+        <div class="people">
+            <h3>People</h3>
+            <table>
+                <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Role</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td><i class="large material-icons">group</i></td>
+                    <td>Alden Richards</td>
+                    <td>Student</td>
+                    <td><a href="profile_student"><button>View</button></a></td>
+                </tr>
+                <tr>
+                    <td><i class="large material-icons">group</i></td>
+                    <td>Katheryn Bernardo Richards</td>
+                    <td>Student</td>
+                    <td><a href="profile_student"><button>View</button></a></td>
+                </tr>
+                <tr>
+                    <td><i class="large material-icons">group</i></td>
+                    <td>Mimi Yuh</td>
+                    <td>Student</td>
+                    <td><a href="profile_student"><button>View</button></a></td>
+                </tr>
+                <tr>
+                    <td><i class="large material-icons">group</i></td>
+                    <td>{{name2}}</td> <!-- Correctly binding the staff name -->
+                    <td>Staff</td>
+                    <td><a href="profile_staff"><button>View</button></a></td>
+                </tr>
+                <tr>
+                    <td><i class="large material-icons">group</i></td>
+                    <td>Maine Mendoza</td>
+                    <td>Student</td>
+                    <td><a href="profile_student"><button>View</button></a></td>
+                </tr>
+                <tr>
+                    <td><i class="large material-icons">group</i></td>
+                    <td>Zenna Bau</td>
+                    <td>Student</td>
+                    <td><a href="profile_student"><button>View</button></a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

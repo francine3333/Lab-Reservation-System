@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DLSU Reserve</title>
+    <link rel="stylesheet" href="reslocstyle.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    font-weight: 550;
+    background-color: #F9F9F9;
+    font-family: 'Inter', sans-serif;
+    }
+
+    a {
+        color: black;
+        text-decoration: none;
+    }
+
+    i {
+        margin-right: 8px;
+        vertical-align: middle;
+    }
+
+    .divider {
+        line-height: 133px;
+        border-bottom: #E1E1E1 1px solid;
+        width: 1350px; 
+        margin-left: 330px; 
+    }
+
+    .sidenav {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 250px; 
+        height: 100%;
+        background-color: white;
+        border-radius: 30px;
+        box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .sidenav .logout {
+        position: absolute;
+        bottom: 200px;
+        left: 125px; 
+        transform: translateX(-50%);
+        background-color: white;
+        transition: 0.4s;
+        cursor: pointer;
+    }
+
+    .sidenav .logout a {
+        display: flex;
+        align-content: start;
+        background-color: white;
+        width: 200px;
+        height: 40px;
+        align-items: center;
+        padding-left: 10px;
+        color: #464B47;
+    }
+
+    .sidenav .logout a:hover{
+        background-color: #E9F7EC;
+        border-radius: 10px;
+    }
+
+    .sidenav .logout a:hover > i{
+        background-color: #E9F7EC;
+        border-radius: 10px;
+    }
+
+    .sidenav h1 {
+        color: black;
+        text-align: center;
+        line-height: 130px;
+        background-color: white;
+    }
+
+    .sidenav .selected {
+        background-color: #E9F7EC;
+        border-radius: 10px;
+        color: #13832C;
+    }
+
+    .sidenav .selected i {
+        color: #464B47;
+        background-color: #E9F7EC;
+    }
+
+    .sidenav ul {
+        list-style: none;
+        padding: 0;
+        padding-left: 20px;
+        background-color: white;
+    }
+
+    .sidenav ul li {
+        padding: 2px 0;
+        background-color: white;
+    }
+
+    .sidenav ul li a {
+        display: flex;
+        align-content: start;
+        background-color: white;
+        width: 200px;
+        height: 40px;
+        align-items: center;
+        padding-left: 10px;
+        color: #464B47;
+        transition: 0.4;
+        cursor: pointer;
+    }
+
+    .sidenav ul li a:hover{
+        background-color: #E9F7EC;
+        border-radius: 10px;
+    }
+
+    .sidenav ul li a:hover > i{
+        background-color: #E9F7EC;
+        border-radius: 10px;
+    }
+
+    .sidenav ul li i {
+        background-color: white;
+    }
+
+    .reservation-box {
+        position: absolute;
+        left: 35%; 
+        top: 20%; 
+        width: 55%; 
+        height: 70%; 
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+    }
+
+    .date-header {
+        width: 90%; 
+        padding: 20px 16px;
+        background: transparent;
+        box-shadow: 0px -1px 0px rgba(17, 17, 17, 0.08) inset;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        overflow-y: hidden;
+    }
+
+    .date-text {
+        width: 20%; 
+        color: rgba(0, 0, 0, 0.70);
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 20px;
+        background-color: white;
+    }
+
+    .time-block-container {
+        width: 90%; 
+        height: 100%;
+        padding: 0.6% 1%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5%; 
+        background-color: white;
+        overflow-y: hidden;
+    }
+
+    .time-block {
+        width: 10%; 
+        height: 100%; 
+        background: rgba(26, 168, 57, 0.50);
+        border: none;
+        border-radius: 15px;
+        color: #105A20;
+        font-size: 16px;
+        font-weight: 550;
+        line-height: 19px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 1%; 
+        overflow-y: hidden;
+    }
+
+    .time-block a{
+        max-height: fit-content;
+    }
+
+    .time-block:hover {
+        background: rgba(26, 168, 57, 0.70);
+    }
+
+    /**/
+
+    .newres {
+        width: 200px;
+        left: 330px;
+        top: 200px;
+        position: absolute;
+    }
+
+    .newres p {
+        font-size: 24px;
+    }
+
+    .location-selector {
+        width: 180px;
+        height: 218px;
+        position: absolute;
+        top: 275px;
+        left: 330px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .selector-header {
+        width: 180px;
+        height: 30px;
+        color: black;
+        overflow-y: hidden;
+        box-shadow: 0px -1px 0px black inset;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 19px;
+        padding-left: 30px;
+        padding-bottom: 6px;
+    }
+
+    .selector-option {
+        width: 180px;
+        height: 41px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        color: #636366;
+        font-size: 14px;
+        padding-left: 30px;
+        box-shadow: 0px -1px 0px rgba(17, 17, 17, 0.08) inset;
+        font-weight: 550;
+        transition: 0.4s;
+        cursor: pointer;
+    }
+
+    .selector-option:hover{
+        color:  #2A8F41;
+    }
+
+    .selector-option.active {
+        color: black;
+        justify-content: flex-start;
+        align-content: flex-end;
+        color: #2A8F41;
+        padding-left: 30px;
+        box-shadow: 0px -1px 0px rgba(17, 17, 17, 0.08) inset;
+    }
+
+    /**/
+
+    .placeholder-image {
+        width: 40px;
+        height: 40px;
+        border-radius: 24px;
+    }
+
+    .userprof {
+        position: absolute;
+        bottom: 115px;
+        left: 130px;
+        transform: translateX(-50%);
+        padding-top: 15px;
+        padding-right: 130px;
+        padding-left: 9px;
+        border-top: #E1E1E1 1px solid;
+        background-color: white;
+    }
+
+    .userred {
+        position: absolute;
+        bottom: 95px;
+        width: 90%;
+        margin-left: 62%;
+        transform: translateX(-50%);
+        background-color: white;
+    }
+
+    .userred b {
+        color: black;
+        background-color: white;
+    }
+
+    .useremail {
+        position: absolute;
+        bottom: 75px;
+        transform: translateX(-50%);
+        left: 113.5px;
+        color: #636366;
+    }
+
+    .useremail h4 {
+        font-weight: 200;
+        background-color: white;
+    }
+
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+
+        <div class="divider">.</div> <!--Eto lang yung divider sa may header part-->
+
+        <!--SIDEBAR-->
+        <div class="sidenav">
+            <h1>DLSU Reserve</h1>
+
+            <!--ICONS-->
+            <ul>
+                <li><a href="Reservation_LocP2.1.html" class="selected"><i class="large material-icons">event_note</i>Reserve</a></li> <!--SELECTED MENU-->
+                <li><a href="PeopleStaff.html"><i class="large material-icons">group</i>People</a></li>
+                <li><a href="BookingsStaff.html"><i class="large material-icons">collections_bookmark</i>Bookings</a></li>
+                <li><a href="editprofile_staff.html"><i class="large material-icons">settings</i>Settings</a></li>
+            </ul>
+            <div class="logout">
+                <a href="LoginStaff.html"><i class="large material-icons">exit_to_app</i>Log Out</a>
+            </div>
+
+            <!--PROFILE-->
+            <div class="userprof">
+                <a href="UserStaff.html"> <!--href will lead to user profile-->
+                    <img class="placeholder-image" src="Mimi.png" alt="Mimi Yhu">
+                </a>
+            </div>
+            <div class="userred">
+                <a href="UserStaff.html" class="usernamee"><b>Mimi Yhu</b></a> <!--href will lead to user profile-->
+            </div>
+            <div class="useremail">
+                <span><h4>MimiY@dlsu.edu.ph</h4></span>
+            </div>
+
+        </div>
+
+        <!--RESERVATION-->
+        <div class="newres">
+            <p>New Reservation</p>
+        </div>
+
+        <div class="reservation">
+            <div class="location-selector">
+                <div class="selector-header">Select Location</div>
+                <a href="Reservation_LocP2.1.html" class="selector-option">Gokongwei 302A</a>
+                <a href="Reservation_LocP2.2.html" class="selector-option active"><b>Gokongwei 403B</b></a> <!--SELECTED LOCATION-->
+                <a href="Reservation_LocP2.3.html" class="selector-option">Gokongwei 205A</a>
+            </div>
+        </div>
+
+        <!--MAIN CONTENT-->
+        <div class="main-content">
+            <section class="sec1">
+                <div class="main-content">
+                    <div class="reservation-box">
+                        <div class="date-header">
+                            <div class="date-text">June 5, 2024</div>
+                        </div>
+                        <div class="time-block-container">
+                            <a href="NewReservationStaff2.2.html" class="time-block">9:30 AM</a>
+                            <a href="NewReservationStaff2.2.html" class="time-block">10:00 AM</a>
+                        </div>
+                        <div class="date-header">
+                            <div class="date-text">June 6, 2024</div>
+                        </div>
+                        <div class="time-block-container">
+                            <a href="NewReservationStaff2.2.html" class="time-block">12:00 PM</a>
+                            <a href="NewReservationStaff2.2.html" class="time-block">1:30 PM</a>
+                            <a href="NewReservationStaff2.2.html" class="time-block">2:00 PM</a>
+                        </div>
+                        <div class="date-header">
+                            <div class="date-text">June 7, 2024</div>
+                        </div>
+                        <div class="time-block-container">
+                            <a href="NewReservationStaff2.2.html" class="time-block">4:30 PM</a>
+                            <a href="NewReservationStaff2.2.html" class="time-block">5:00 PM</a>
+                        </div>
+                        <div class="date-header">
+                            <div class="date-text">June 8, 2024</div>
+                        </div>
+                        <div class="time-block-container">
+                            <a href="NewReservationStaff2.2.html" class="time-block">11:00 AM</a>
+                            <a href="NewReservationStaff2.2.html" class="time-block">11:30 AM</a>
+                            <a href="NewReservationStaff2.2.html" class="time-block">12:00 PM</a>
+                        </div>
+                        <div class="date-header">
+                            <div class="date-text">June 10, 2024</div>
+                        </div>
+                        <div class="time-block-container">
+                            <a href="NewReservationStaff2.2.html" class="time-block">1:00 PM</a>
+                            <a href="NewReservationStaff2.2.html" class="time-block">1:30 PM</a>
+                        </div>
+                        <div class="date-header">
+                            <div class="date-text">June 11, 2024</div>
+                        </div>
+                        <div class="time-block-container">
+                            <a href="NewReservationStaff2.2.html" class="time-block">2:30 PM</a>
+                        </div>
+                        <div class="date-header">
+                            <div class="date-text">June 12, 2024</div>
+                        </div>
+                        <div class="time-block-container">
+                            <a href="NewReservationStaff2.2.html" class="time-block">11:30 PM</a>
+                            <a href="NewReservationStaff2.2.html" class="time-block">2:00 PM</a>
+                            <a href="NewReservationStaff2.2.html" class="time-block">3:00 PM</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </div>
+</body>
+</html>

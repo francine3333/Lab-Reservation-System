@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Login Page</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">    
+<style>
+    body{
+        margin: 0%;
+        height: 100%;
+        background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url('DLSU.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 100%;
+    }
+    .starter-page{
+        display: flex;
+        flex-direction: column;
+        margin-left: 35%;
+        margin-right: 35%;
+        align-items: center;
+    }
+    .login-area{
+        display: flex;
+        flex-direction: column;
+    }
+    .login-area{
+        width: 90%;
+        margin-top: 35%;
+        align-items: center;
+        border-radius: 20px;
+        background-color: rgba(255, 255, 255, 0.85);
+        opacity: 1;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .login-area > img{
+        width: 30%;
+        border-radius: 50%;
+        margin-top: -50px;
+        margin-bottom: 5px;
+    }
+    .login-title{
+        font-size: 15pt;
+        color:black;
+        align-items: center;
+        text-align: center;
+        margin-top: 5px;
+        margin-bottom: 15px;
+        opacity: 1;
+    }
+    form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 70%;
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+    .login-textfield-area{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #828282;
+    }
+    input[type=text]{
+        border-radius: 5px;
+        border: 0px;
+        width: 100%;
+        padding: 10px 10px;
+        margin: 5px;
+        box-sizing: border-box;
+    }
+    input[type=password]{
+        border-radius: 5px;
+        border: 0px;
+        width: 100%;
+        padding: 10px 10px;        
+        margin: 5px;
+        box-sizing: border-box;
+    }
+    .checkbox-area{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        position: relative;
+        align-items: center;
+        font-size: 9pt;
+        color: #636366;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .button{
+        width: 100%;
+        color: white;
+        font-size: 12pt;
+        background-color:#13832C;
+        border: 0px;
+        border-radius: 5px;
+        padding: 5px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+    }
+    .button:hover{
+        background-color: darkgreen;
+    }
+    .login-bottomtext{
+        font-size: 9pt;
+        color:grey;
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 15px;
+    }
+</style>
+</head>
+<body>
+<div class="starter-page">
+    <div class="login-area">
+        <img src="/images/DLSU-LOGO.png" alt="DLSU"/>
+        <div class="login-title">
+            <strong>Login</strong>
+        </div>
+        <form action="editprofile_student" method="post">
+        <div class="login-textfield">
+            <input type="text" placeholder="email@dlsu.edu.ph">
+            <input type="password" placeholder="Password">
+        </div>
+        <div class="checkbox-area">
+            <input type="checkbox"> Remember Me
+            <input type="checkbox"> Forgot Password?
+        </div>
+        <button type="submit" class="button">Login</button>
+        </form>
+        <div class="login-bottomtext">
+            Don't have an account? <strong><a href="RegisterStudent.html">Sign Up</a></strong>
+        </div>
+    </div>
+</div>  
+</body>
+</html>

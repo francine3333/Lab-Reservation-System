@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Staff</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="profile_design.css">
+   
+</head>
+<body>
+    <div class="divider">.</div> <!--Eto lang yung divider sa may header part-->
+         <!--SIDEBAR-->
+    <div class="sidenav">
+        <h1>DLSU Reserve</h1>
+        <!--ICONS-->
+        <ul>
+            <li><a href="21Reservation_LocP" ><i class="large material-icons">event_note</i>Reserve</a></li> <!--SELECTED MENU-->
+            <li><a href="PeopleStaff"><i class="large material-icons">group</i>People</a></li>
+            <li><a href="BookingStaff"class="selected"><i class="large material-icons">collections_bookmark</i>Bookings</a></li>
+            <li><a href="editprofile_staff"><i class="large material-icons">settings</i>Settings</a></li>
+        </ul>
+        <div class="logout">
+            <a href="LoginStaff"><i class="large material-icons">exit_to_app</i>Log Out</a>
+        </div>
+
+        <!--PROFILE-->
+        <div class="userprof">
+            <a href="UserStaff.html"> <!--href will lead to user profile-->
+                <img class="placeholder-image" src="/common/Mimi.png" alt="Mimi Yhu">
+            </a>
+        </div>
+        <div class="userred">
+            <a href="UserStaff.html" class="usernamee"><b>Mimi Yhu</b></a> <!--href will lead to user profile-->
+        </div>
+        <div class="useremail">
+            <span><h4>MimiY@dlsu.edu.ph</h4></span>
+        </div>
+</div>
+<div class="main">
+    <div class="bookings">
+        <h3>Upcoming Reservations</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date of Reservation</th>
+                    <th>Time of Reservation</th>
+                    <th>Seat</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each reservations}}
+                <tr>
+                    <td>{{date}}</td>
+                    <td>{{time}}</td>
+                    <td>{{seat}}</td>
+                    <td>
+                        <form action="/cancelReservation" method="POST">
+                            <input type="hidden" name="reservationId" value="{{_id}}">
+                            <button type="submit">Cancel</button>
+                        </form>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
